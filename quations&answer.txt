@@ -1,0 +1,55 @@
+The first question asks to select and display the whole information from the users 
+and progress table. 
+What are the Top 25 schools (.edu domains)?
+How many .edu learners are located in New York?
+The mobile_app column contains either mobile-user or NULL. 
+How many of these Codecademy learners are using the mobile app?
+
+my Answer for these question is 
+
+SELECT * FROM users;
+SELECT * FROM progress;
+
+SELECT * FROM users 
+WHERE email_domain LIKE '%.edu'
+ LIMIT 25; 
+
+SELECT COUNT(*) FROM users 
+WHERE city = 'New York' AND email_domain LIKE '%.edu';
+
+SELECT mobile_app FROM users WHERE mobile_app = 'mobile-user' OR mobile_app = IS NULL;
+
+SELECT count(mobile_app) FROM users WHERE mobile-user=' Codecademy learners';
+
+The second question asks the data type of the DATETIME found in sign_up column.
+
+  SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 1 LIMIT 20;
+
+  the last question asks us to join the two tables using JOIN tables using schools and courses data. 
+
+Do different schools (.edu domains) prefer different courses?
+What courses are the New Yorkers students taking?
+What courses are the Chicago students taking?
+
+SELECT * FROM users AS U LEFT JOIN progress AS P ON U.user_id = p.user_id;
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_cpp FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_cpp = 'started';
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_javascript = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_sql = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_html = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_html = 'started';
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_javascript = 'started';
+
+ SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_sql = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_java = 'started';
+
+ 

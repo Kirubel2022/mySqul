@@ -7,25 +7,45 @@ LIMIT 25;
 
 SELECT COUNT(*) FROM users WHERE city = 'New York' AND email_domain LIKE '%.edu';
 
-SELECT mobile_app FROM users WHERE mobile_app = 'mobile-user' OR mobile_app = '';
+SELECT mobile_app FROM users WHERE mobile_app = 'mobile-user' OR mobile_app = IS NULL;
 
-SELECT count(mobile_app) FROM users WHERE mobile_app = 'mobile-user' OR mobile_app IS NOT NULL;
-
-SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 1 LIMIT 20;
-
-SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_javascript = 'started';
-
-SELECT users.user_id,progress.user_id, users.city, progress.learn_cpp FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_cpp = 'started';
-
-SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_html = 'started';
-
- SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_java = 'started';
-
-SELECT users.user_id,progress.user_id, users.city, progress.learn_cpp FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_cpp = 'started';
+SELECT count(mobile_app) FROM users WHERE mobile-user=' Codecademy learners';
 
 
-SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_sql = 'started';
- 
+SELECT * FROM users AS U LEFT JOIN progress AS P ON U.user_id = p.user_id;
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_cpp 
+FROM users JOIN progress ON users.user_id = progress.user_id 
+WHERE city = 'New York' AND learn_cpp = 'started';
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript
+ FROM users JOIN progress ON users.user_id = progress.user_id 
+ WHERE city = 'New York' AND learn_javascript = 'started';
 
 
-SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_java = 'started';
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql
+ FROM users JOIN progress ON users.user_id = progress.user_id 
+ WHERE city = 'New York' AND learn_sql = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html 
+FROM users JOIN progress ON users.user_id = progress.user_id 
+WHERE city = 'New York' AND learn_html = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html 
+FROM users JOIN progress ON users.user_id = progress.user_id 
+WHERE city = 'Chicago' AND learn_html = 'started';
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript 
+FROM users JOIN progress ON users.user_id = progress.user_id
+ WHERE city = 'Chicago' AND learn_javascript = 'started';
+
+ SELECT users.user_id,progress.user_id, users.city, progress.learn_sql
+  FROM users JOIN progress ON users.user_id = progress.user_id 
+  WHERE city = 'Chicago' AND learn_sql = 'started';
+
+
+SELECT users.user_id,progress.user_id, users.city, progress.learn_java 
+FROM users JOIN progress ON users.user_id = progress.user_id 
+WHERE city = 'Chicago' AND learn_java = 'started';
